@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <header>
-      <h1>X-Files • Main or Monster?</h1>
+      <h1>X-Files • Main or Monster</h1>
       <Switcher value={category === 'Monster_of_the_Week'} onSwitcherChange={onSwitcherChange} />
     </header>
   );
