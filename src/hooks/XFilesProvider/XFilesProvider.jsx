@@ -7,7 +7,9 @@ export const CharacterContext = createContext();
 export const XFilesProvider = ({ children }) => {
   const [category, setCategory] = useState('Main_characters');
   const [characters, setCharacters] = useState([]);
+  const [resultsLength, setResultsLength] = useState(0);
   const [page, setPage] = useState(1);
+  const [perPage] = useState(8);
 
   const handleSwitcherChange = ({ target }) => {
     if(target.checked) setCategory('Main_characters');
@@ -19,12 +21,23 @@ export const XFilesProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchCharacters(category, page)
-      .then(data => setCharacters(data)); 
+    fetchCharacters(category, page, perPage)
+      .then(data => {
+        setCharacters(data);
+        setResultsLength(data.length);
+      }); 
   }, [category, page]);
 
   return (
-    <CharacterContext.Provider value={{ characters, handleSwitcherChange, category, page, handlePage }}>
+    <CharacterContext.Provider value={{ 
+      characters, 
+      handleSwitcherChange, 
+      category, 
+      page, 
+      perPage, 
+      resultsLength, 
+      handlePage 
+    }}>
       {children}
     </CharacterContext.Provider>
   );
@@ -56,9 +69,19 @@ export const usePage = () => {
   return page;
 };
 
+export const usePerPage = () => {
+  const { perPage } = useContext(CharacterContext);
+  return perPage;
+};
+
 export const useSetPage = () => {
   const { setPage } = useContext(CharacterContext);
   return setPage;
+};
+
+export const useResultsLength = () => {
+  const { resultsLength } = useContext(CharacterContext);
+  return resultsLength;
 };
 
 export const useHandlePage = () => {
