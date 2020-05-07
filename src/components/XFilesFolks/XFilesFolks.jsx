@@ -1,10 +1,10 @@
 import React from 'react';
-import { useCharacters } from '../services/services';
+import { fetchCharacters } from '../../services/services';
 import Gallery from '../Gallery/Gallery';
 
 const XFilesFolks = () => {
 
-  const characters = useCharacters();
+  const characters = fetchCharacters();
 
   return (
     <Gallery characters={characters} />
