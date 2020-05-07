@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Switcher = ({ value, onSwitcherChange }) => (
   <section>
-    <input id="switcher" type="checkbox" checked={value} onChange={onSwitcherChange} />
+    Man <input id="switcher" type="checkbox" checked={value} onChange={onSwitcherChange} /> Monster
   </section>
 );
 

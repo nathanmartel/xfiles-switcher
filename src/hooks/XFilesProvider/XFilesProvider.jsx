@@ -7,22 +7,24 @@ export const CharacterContext = createContext();
 export const XFilesProvider = ({ children }) => {
   const [category, setCategory] = useState('Main_characters');
   const [characters, setCharacters] = useState([]);
+  const [page, setPage] = useState(1);
 
   const handleSwitcherChange = ({ target }) => {
     if(target.checked) setCategory('Main_characters');
     if(!target.checked) setCategory('Monster_of_the_Week');
   };
 
+  const handlePage = (increment) => {
+    setPage(page + increment);
+  };
+
   useEffect(() => {
-    fetchCharacters(category)
-      .then(data => { 
-        console.log('Character data is', data); 
-        setCharacters(data); 
-      });
-  }, [category]);
+    fetchCharacters(category, page)
+      .then(data => setCharacters(data)); 
+  }, [category, page]);
 
   return (
-    <CharacterContext.Provider value={{ characters, handleSwitcherChange, category }}>
+    <CharacterContext.Provider value={{ characters, handleSwitcherChange, category, page, handlePage }}>
       {children}
     </CharacterContext.Provider>
   );
@@ -47,4 +49,19 @@ export const useCategory = () => {
 export const useSwitch = () => {
   const { handleSwitcherChange } = useContext(CharacterContext);
   return handleSwitcherChange;
+};
+
+export const usePage = () => {
+  const { page } = useContext(CharacterContext);
+  return page;
+};
+
+export const useSetPage = () => {
+  const { setPage } = useContext(CharacterContext);
+  return setPage;
+};
+
+export const useHandlePage = () => {
+  const { handlePage } = useContext(CharacterContext);
+  return handlePage;
 };
