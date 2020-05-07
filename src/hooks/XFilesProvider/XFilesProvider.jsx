@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { fetchCharacters } from '../../services/services';
+import { fetchCharacters, fetchAllCharacters } from '../../services/services';
 
 export const CharacterContext = createContext();
 
@@ -12,20 +12,30 @@ export const XFilesProvider = ({ children }) => {
   const [perPage] = useState(8);
 
   const handleSwitcherChange = ({ target }) => {
-    if(target.checked) setCategory('Main_characters');
-    if(!target.checked) setCategory('Monster_of_the_Week');
+    if(target.checked) setCategory('Monster_of_the_Week');
+    if(!target.checked) setCategory('Main_characters');
   };
 
   const handlePage = (increment) => {
     setPage(page + increment);
   };
 
+  const useFetchResultsLength = () => {
+    fetchAllCharacters(category)
+      .then(data => setResultsLength(data.quantity)); 
+  };
+
+  // const useResultsLength(() => {
+  //   fetchAllCharacters(category)
+  //     .then(data => {
+  //       setResultsLength(data.quantity);
+  //     }); 
+  // }, [category]);
+
   useEffect(() => {
+    if(resultsLength === 0) useFetchResultsLength();
     fetchCharacters(category, page, perPage)
-      .then(data => {
-        setCharacters(data);
-        setResultsLength(data.length);
-      }); 
+      .then(data => setCharacters(data.results));
   }, [category, page]);
 
   return (

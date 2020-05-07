@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePage, usePerPage, useResultsLength, useHandlePage } from '../../hooks/XFilesProvider/XFilesProvider';
+import styles from './Pagination.css';
 
 const Pagination = () => {
   
@@ -8,17 +9,14 @@ const Pagination = () => {
   const resultsLength = useResultsLength();
   const handlePage = useHandlePage();
 
-  // Hmm, too bad API doesn't return a results length...
   const totalPages = Math.ceil(resultsLength / perPage);
 
   return (
-    <>
+    <section className={styles.Pagination}>
       <button onClick={() => handlePage(-1)} disabled={ page <= 1 }>Prev</button>
-      <span>{page}</span>
-      {/* // Hmm, too bad API doesn't return a results length */}
-      {/* <span>{page} of {totalPages}</span> */}
-      <button onClick={() => handlePage(1)} disabled={resultsLength < perPage}>Next</button>
-    </>
+      <span>{page} of {totalPages}</span>
+      <button onClick={() => handlePage(1)} disabled={page >= totalPages}>Next</button>
+    </section>
   );
 };
 

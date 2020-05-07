@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Switcher.css';
 
 const Switcher = ({ value, onSwitcherChange }) => (
-  <section>
+  <section className={styles.Switcher}>
     Main <input id="switcher" type="checkbox" checked={value} onChange={onSwitcherChange} /> Monster
+    <label htmlFor="switcher"></label>
   </section>
 );
 
