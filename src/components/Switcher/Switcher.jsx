@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Switcher = ({ switchChange, value }) => (
+const Switcher = ({ value, onSwitcherChange }) => (
   <section>
-    <input id="switcher" type="checkbox" checked={value} onChange={switchChange} />
+    <input id="switcher" type="checkbox" checked={value} onChange={onSwitcherChange} />
   </section>
 );
 
 Switcher.propTypes = {
-  switchChange: PropTypes.func.isRequired,
-  value: PropTypes.bool.isRequired
+  value: PropTypes.bool.isRequired,
+  onSwitcherChange: PropTypes.func.isRequired
 };
 
 export default Switcher;

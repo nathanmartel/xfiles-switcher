@@ -5,13 +5,14 @@ const Gallery = ({ characters }) => {
   
   const characterElements = characters.map((character, index) => (
     <li key={index}>
+      <img src={character.image} alt={character.name}/>
       <h3>{character.name}</h3>
+      <p>{character.description}</p>
     </li>
   ));
   
   return (
     <ul>
-      { console.log('characters passed to gallery is', characters) }
       {characterElements}
     </ul>   
   );
