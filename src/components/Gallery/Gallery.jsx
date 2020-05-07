@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './gallery.css';
 
 const Gallery = ({ characters }) => {
   
@@ -12,7 +13,7 @@ const Gallery = ({ characters }) => {
   ));
   
   return (
-    <ul>
+    <ul className={styles.Gallery}>
       {characterElements}
     </ul>   
   );
