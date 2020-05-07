@@ -2,21 +2,22 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { fetchCharacters } from '../../services/services';
 
-const CharacterContext = createContext();
+export const CharacterContext = createContext();
 
 export const XFilesProvider = ({ children }) => {
   
-  const [mainCharacters, setMainCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     fetchCharacters()
       .then(data => { 
         console.log('Character data is', data); 
-        setMainCharacters(data); });
+        setCharacters(data); 
+      });
   }, []);
 
   return (
-    <CharacterContext.Provider value={{ mainCharacters }}>
+    <CharacterContext.Provider value={characters}>
       {children}
     </CharacterContext.Provider>
   );

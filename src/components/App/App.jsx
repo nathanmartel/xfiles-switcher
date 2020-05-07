@@ -8,7 +8,7 @@ export default function App() {
   return (
     <XFilesProvider>
       <Header />
-      <Switcher />
+      {/* <Switcher /> */}
       <XFilesFolks />
     </XFilesProvider>
   );
