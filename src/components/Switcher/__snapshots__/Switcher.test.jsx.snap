@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Switcher component renders Switcher 1`] = `
-<section>
+<section
+  className="Switcher"
+>
   Main 
   <input
     checked={true}
@@ -10,5 +12,8 @@ exports[`Switcher component renders Switcher 1`] = `
     type="checkbox"
   />
    Monster
+  <label
+    htmlFor="switcher"
+  />
 </section>
 `;

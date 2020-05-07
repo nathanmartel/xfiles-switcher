@@ -25,13 +25,6 @@ export const XFilesProvider = ({ children }) => {
       .then(data => setResultsLength(data.quantity)); 
   };
 
-  // const useResultsLength(() => {
-  //   fetchAllCharacters(category)
-  //     .then(data => {
-  //       setResultsLength(data.quantity);
-  //     }); 
-  // }, [category]);
-
   useEffect(() => {
     if(resultsLength === 0) useFetchResultsLength();
     fetchCharacters(category, page, perPage)
