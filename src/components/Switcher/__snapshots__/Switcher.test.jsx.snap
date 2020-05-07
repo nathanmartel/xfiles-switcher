@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switcher component renders Switcher 1`] = `
+<section>
+  Main 
+  <input
+    checked={true}
+    id="switcher"
+    onChange={[Function]}
+    type="checkbox"
+  />
+   Monster
+</section>
+`;
