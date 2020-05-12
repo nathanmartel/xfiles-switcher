@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { fetchCharacters, fetchAllCharacters } from '../../services/services';
 
 export const CharacterContext = createContext();
+export const main = 'Main_characters';
+export const monster = 'Monster_of_the_Week';
 
 export const XFilesProvider = ({ children }) => {
-  const main = 'Main_characters';
-  const monster = 'Monster_of_the_Week';
   const [category, setCategory] = useState(main);
   const [characters, setCharacters] = useState([]);
   const [resultsLength, setResultsLength] = useState(0);

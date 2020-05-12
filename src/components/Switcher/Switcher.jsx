@@ -4,8 +4,9 @@ import styles from './Switcher.css';
 
 const Switcher = ({ value, onSwitcherChange }) => (
   <section className={styles.Switcher}>
-    Main <input id="switcher" type="checkbox" checked={value} onChange={onSwitcherChange} /> Monster
+    <span>Main</span> <input id="switcher" type="checkbox" checked={value} onChange={onSwitcherChange} />
     <label htmlFor="switcher"></label>
+    <span>Monster</span>
   </section>
 );
 

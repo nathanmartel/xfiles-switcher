@@ -5,6 +5,7 @@ import { XFilesProvider } from '../../hooks/XFilesProvider/XFilesProvider';
 import Pagination from '../Pagination/Pagination';
 
 export default function App() {
+
   return (
     <XFilesProvider>
       <Header />

@@ -4,16 +4,21 @@ exports[`Switcher component renders Switcher 1`] = `
 <section
   className="Switcher"
 >
-  Main 
+  <span>
+    Main
+  </span>
+   
   <input
     checked={true}
     id="switcher"
     onChange={[Function]}
     type="checkbox"
   />
-   Monster
   <label
     htmlFor="switcher"
   />
+  <span>
+    Monster
+  </span>
 </section>
 `;
