@@ -5,24 +5,47 @@ import { fetchCharacters, fetchAllCharacters } from '../../services/services';
 export const CharacterContext = createContext();
 
 export const XFilesProvider = ({ children }) => {
-  const [category, setCategory] = useState('Main_characters');
+  const main = 'Main_characters';
+  const monster = 'Monster_of_the_Week';
+  const [category, setCategory] = useState(main);
   const [characters, setCharacters] = useState([]);
   const [resultsLength, setResultsLength] = useState(0);
+  const [mainResultsLength, setMainResultsLength] = useState(0);
+  const [monsterResultsLength, setMonsterResultsLength] = useState(0);
   const [page, setPage] = useState(1);
+  const [mainPage, setMainPage] = useState(1);
+  const [monsterPage, setMonsterPage] = useState(1);
   const [perPage] = useState(8);
 
+  // Allow each category to maintain its own number of pages, active page, and results
+  // Could also do this by passing props to pagination, but we're experimenting here...
   const handleSwitcherChange = ({ target }) => {
-    if(target.checked) setCategory('Monster_of_the_Week');
-    if(!target.checked) setCategory('Main_characters');
+    if(target.checked) {
+      setCategory(monster);
+      setPage(monsterPage);
+      setResultsLength(monsterResultsLength);
+    }
+    if(!target.checked) {
+      setCategory(main);
+      setPage(mainPage);
+      setResultsLength(mainResultsLength);
+    }
   };
 
   const handlePage = (increment) => {
     setPage(page + increment);
+    if(category === main) setMainPage(page + increment);
+    if(category === monster) setMonsterPage(page + increment);
   };
 
   const useFetchResultsLength = () => {
     fetchAllCharacters(category)
-      .then(data => setResultsLength(data.quantity)); 
+      .then(data => {
+        setResultsLength(data.quantity); 
+        category === main
+          ? setMainResultsLength(data.quantity)
+          : setMonsterResultsLength(data.quantity);
+      });
   };
 
   useEffect(() => {
