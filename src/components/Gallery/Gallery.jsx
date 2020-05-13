@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useCategory } from '../../hooks/XFilesProvider/XFilesProvider';
-import styles from './Gallery.css';
+import styles from './gallery.css'; 
 
 const Gallery = ({ characters }) => {
 
