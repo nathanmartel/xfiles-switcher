@@ -1,4 +1,4 @@
-.Main_characters {
+.gallery {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -21,26 +21,17 @@
   }
 }
 
-.Monster_of_the_Week {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  img {
-    width: 100%;
-  }
-
+.Main_characters {
   li {
-    list-style-type: none;
-    width: 19vw;
-    margin: 1rem;
-    background-color: #222;
+    background-color: red;
     color: #f3f3f3;
   }
+}
 
-  li h3,
-  li p {
-    padding: 0 1rem;
+.Monster_of_the_Week {
+  li {
+    background-color: #000;
+    color: green;
   }
 }
 

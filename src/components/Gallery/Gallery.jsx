@@ -16,7 +16,7 @@ const Gallery = ({ characters }) => {
   ));
   
   return (
-    <ul className={styles[`${category}`]}>
+    <ul className={`${styles.gallery} ${styles[category]}`}>
       {characterElements}
     </ul>   
   );
